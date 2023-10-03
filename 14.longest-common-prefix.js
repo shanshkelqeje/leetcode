@@ -10,27 +10,12 @@
  * @return {string}
  */
 var longestCommonPrefix = function(strs) {
-    prefix = '';
-    letter = '';
-    x = 0;
-    j = 0;
+    commonPrefix = '';
     for(var i = 0; i < strs.length; i++) {
-        letter = strs[0][j];
-        if(strs[i][j] == letter) {
-            x += 1;
-        }
-        else {
-            return prefix;
-        }
-        if(x == strs.length) {
-            prefix += letter;
-            x = 0;
-            i = -1;
-            j += 1;
-            letter = strs[i+1][j];
+        for(var j = 0; j < strs.length; j++) {
+            
         }
     }
-    return prefix;
 };
 strs = ["dog","racecar","car"]
 console.log(longestCommonPrefix(strs));
