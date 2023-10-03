@@ -17,7 +17,20 @@
  * @return {ListNode}
  */
 var middleNode = function(head) {
-    
+    totalNodes = 0;
+    middleNodePos = 0;
+    x = head;
+    y= head;
+    while(x.next != null) {
+        x = x.next;
+        totalNodes += 1;
+    }
+    middleNodePos = Math.ceil(totalNodes / 2);
+    while(middleNodePos != 0) {
+        y = y.next;
+        middleNodePos -= 1;
+    }
+    return y;
 };
 // @lc code=end
 
