@@ -3,25 +3,21 @@
  * @return {number}
  */
 var pivotIndex = function(nums) {
-    leftSum = 0;
-    rightSum = 0;
-    index = 0;
-    for(var i = 0; i < nums.length; i++) {
-        if(nums[i] != NaN) {
-            leftSum += nums[i];
+    leftSideSum = 0;
+    rightSideSum = 0;
+    for(var middleIndex = 0; middleIndex < nums.length; middleIndex++) {
+        if(middleIndex > 0) {
+            leftSideSum += nums[middleIndex -1];
         }
-        console.log('leftSum is ' + leftSum);
-        for(var j = nums.length; j > i + 1; j--) {
-            rightSum += nums[j];
-            console.log('rightSum is ' + rightSum);
-            if(leftSum == rightSum) {
-                return index = i + 1;
-            }
+        for(var i = middleIndex + 1; i < nums.length; i++) {
+            rightSideSum += nums[i];
         }
-        rightSum = 0;
+        if(leftSideSum == rightSideSum) {
+            return middleIndex;
+        }
+        else {
+            rightSideSum = 0;
+        }
     }
     return -1;
 };
-
-nums = [2, 1, -1];
-console.log(pivotIndex(nums));
