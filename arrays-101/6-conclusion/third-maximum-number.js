@@ -13,8 +13,10 @@ var thirdMax = function(nums) {
             }
         }
     }
-    return maxDistintNos[2];
+    if(maxDistintNos.length == 3) {
+        return maxDistintNos[2];
+    }
+    else {
+        return maxDistintNos[0];
+    }
 };
-
-nums = [3, 2, 1];
-console.log(thirdMax(nums));
