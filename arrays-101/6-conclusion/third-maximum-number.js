@@ -3,31 +3,18 @@
  * @return {number}
  */
 var thirdMax = function(nums) {
-    distinctNos = [];
-    maximumNo = 0;
+    maxDistintNos = [];
+    nums.sort(function(a, b){return b - a})
     for(var i = 0; i < nums.length; i++) {
-        if(distinctNos.length < 3) {
-            distinctNos.push(nums[i]);
-        }
-        for(var j = 0; j < distinctNos.length; j++) {
-            if(distinctNos[j] == distinctNos[j+1]) {
-                distinctNos.splice(j+1, 1);
+        if(nums[i] != nums[i+1]) {
+            maxDistintNos.push(nums[i]);
+            if(maxDistintNos.length == 3) {
+                break;
             }
         }
     }
-    console.log(distinctNos);
-    if(distinctNos.length == 3) {
-        return distinctNos[2];
-    }
-    else {
-        for(num of distinctNos) {
-            if(maximumNo < num) {
-                maximumNo = num;
-            }
-        }
-        return maximumNo;
-    }
+    return maxDistintNos[2];
 };
 
-nums = [1,2,2,5,3,5];
+nums = [3, 2, 1];
 console.log(thirdMax(nums));
