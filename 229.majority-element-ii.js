@@ -10,9 +10,11 @@
  * @return {number[]}
  */
 var majorityElement = function(nums) {
-    noOfAppearance = Math.floor(nums.length / 3);
-    holdingNums = [];
-    if(noOfAppearance == 0) {
+    maxAppearances = Math.floor(nums.length / 3);
+    totalAppearances = 0;
+    majorityNums = [];
+    // Edge case (when ⌊n/3⌋ = 0)
+    if(maxAppearances == 0) {
         if(nums.length == 2) {
             if(nums[0] == nums[1]) {
                 nums.pop();
@@ -26,19 +28,19 @@ var majorityElement = function(nums) {
             return nums;
         }
     }
-    while(noOfAppearance != 0) {
-        for(var i = 0; i < nums.length; i++) {
-            for(var j = nums.length - 1; j > i; j--) {
-                if(nums[i] == nums[j] && noOfAppearance == 1) {
-                    holdingNums.push(nums[j]);
-                }
-                else {
-                    nums.splice(j, 1);
-                }
+    // General cases
+    nums.sort(function(a, b){return a - b});
+    for(var i = 0; i < nums.length; i++) {
+        if(nums[i] == nums[i+1]) {
+            totalAppearances += 1;
+            if(totalAppearances == maxAppearances) {
+                majorityNums.push(nums[i])
             }
         }
-        noOfAppearance -= 1;
+        else {
+            totalAppearances = 0;
+        }
     }
-    return holdingNums;
+    return majorityNums;
 };
 // @lc code=end
