@@ -17,7 +17,6 @@ var longestCommonPrefix = function(strs) {
         }
     }
 };
-strs = ["dog","racecar","car"]
+strs = ["flower","flow","flight"];
 console.log(longestCommonPrefix(strs));
 // @lc code=end
-
