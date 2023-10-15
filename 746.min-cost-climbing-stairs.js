@@ -11,8 +11,24 @@
  */
 var minCostClimbingStairs = function(cost) {
     totalCost = 0;
-    for(var i = 0; i < cost.length; i++) {
-        totalCost += cost[i];
+    if(cost[0] > cost[1]) {
+        for(var i = 1; i < cost.length; i++) {
+            // console.log(i);
+            totalCost += cost[i];
+            if(cost[i+2] < cost[i+1]) {
+                i++;
+            }
+        }
+    }
+    else {
+        for(var i = 0; i < cost.length; i++) {
+            console.log(i);
+            totalCost += cost[i];
+            console.log(totalCost);
+            if(cost[i+2] < cost[i+1]) {
+                i++;
+            }
+        }
     }
     return totalCost;
 };
