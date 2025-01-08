@@ -11,20 +11,24 @@
  * @return {boolean}
  */
 var isAnagram = function (s, t) {
-    sArray = s.split("").sort();
-    tArray = t.split("").sort();
-    if (sArray.length != tArray.length) return false;
-    else {
-        for (let i = 0; i < sArray.length; i++) {
-            if (sArray[i] != tArray[i]) return false;
-        }
+    if (s.length != t.length) return false;
+    sMap = new Map();
+    tMap = new Map();
+    for (let i = 0; i < s.length; i++) {
+        sMap.set(s[i], (sMap.get(s[i]) || 1) + 1);
+        tMap.set(t[i], (tMap.get(t[i]) || 1) + 1);
+    }
+    for (const [char, count] of sMap) {
+        if (sMap.get(char) != tMap.get(char)) return false;
     }
     return true;
 };
 // @lc code=end
 
+console.log(isAnagram("rat", "car"));
+
 /*
-Brute Force
-Time Complexity: O(nlogn + mlogm)
-Space Complexity: O(n + m)
+Hash Maps
+Time Complexity: O(n + m)
+Space Complexity: O(1) - 26 alphabets
 */
