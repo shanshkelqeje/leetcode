@@ -25,8 +25,6 @@ var isAnagram = function (s, t) {
 };
 // @lc code=end
 
-console.log(isAnagram("rat", "car"));
-
 /*
 Hash Maps
 Time Complexity: O(n + m)
