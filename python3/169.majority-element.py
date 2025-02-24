@@ -8,15 +8,20 @@
 # @lc code=start
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        n = len(nums)
-        num_dict = {}
-        for i in range(n):
-            num_dict[nums[i]] = num_dict.get(nums[i], 0) + 1
-            if num_dict.get(nums[i]) > math.floor(n / 2):
-                return nums[i]
+        count = 0
+        for num in nums:
+            if count == 0:
+                result = num
+                count += 1
+            elif num == result:
+                count += 1
+            else:
+                count -= 1
+        return result
 
 
 # @lc code=end
 
+# Boyer-Moore Voting Algorithm
 # Time Complexity: O(n)
-# Space Complexity: O(n)
+# Space Complexity: O(1)
