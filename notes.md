@@ -91,4 +91,9 @@ while i < length(A)
     end while
     i ← i + 1
 end while
+
+function swap(i, j) is
+    tmp ← A[i]
+    A[i] ← A[j]
+    A[j] ← tmp
 ```
